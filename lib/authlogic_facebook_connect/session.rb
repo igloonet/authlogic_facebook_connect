@@ -142,7 +142,7 @@ module AuthlogicFacebookConnect
 
               self.attempted_record = nil
             else
-              self.attempted_record.save_with_validation(false)
+              self.attempted_record.save(:validate => false)
             end
           rescue Exception => e
             debugger
