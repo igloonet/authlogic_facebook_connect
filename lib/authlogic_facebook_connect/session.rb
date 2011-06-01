@@ -134,7 +134,7 @@ module AuthlogicFacebookConnect
             if facebook_valid_user
               # If the user is not valid throw an error
               unless self.attempted_record.valid?
-                errors.add_to_base(
+                errors.add(:base,
                   I18n.t('error_messages.facebook_user_creation_failed',
                          :default => 'There was a problem creating a new user ' +
                                      'for your Facebook account'))
@@ -146,7 +146,7 @@ module AuthlogicFacebookConnect
             end
           rescue Exception => e
             debugger
-            errors.add_to_base(I18n.t('error_messages.facebooker_session_expired',
+            errors.add(:base, I18n.t('error_messages.facebooker_session_expired',
               :default => "Your Facebook Connect session has expired, please reconnect."))
           end
         end
