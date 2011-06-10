@@ -74,6 +74,7 @@ module AuthlogicFacebookConnect
       def self.included(klass)
         klass.class_eval do
           validate :validate_by_facebook_connect, :if => :authenticating_with_facebook_connect?
+	  validate :validate_magic_states, :unless => :disable_magic_states?
         end
 
         def credentials=(value)
